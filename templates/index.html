@@ -1,0 +1,102 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova Caed</title>
+
+    <style>
+        body {
+            font: normal 20px Arial;
+            background: #2e699c;
+        }
+        
+        .box {
+            background: white;
+            width: max-content;
+            padding: 5px;
+            margin: 5% auto;
+            border-radius: 5px;
+            box-shadow: -5px 5px black;
+            text-align: center;
+        }
+
+        textarea {
+            margin: auto;
+            padding: 2px;
+            border-radius: 5px;
+            border: 2px solid black;
+            width: 750px;
+            height: 100px;
+            text-align: start;
+            resize: none;
+        }
+
+        button {
+            background: white;
+            margin: 2px;
+            border: 2px solid black;
+            border-radius: 3px;
+            color: black;
+            text-align: center;
+            transition-duration: 0.6s;
+        }
+
+        button:hover {
+            background: black;
+            color: white;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="box">
+        <h1>Prova Caed</h1>
+    </div>  
+
+    <div class="box">
+        <div>
+            <form action="/" method="post" style="margin-bottom: 0px;">
+                <h3>Insira o texto aqui:</h3>
+                <textarea type="text" id="1" name="texto" spellcheck="false">{{variavel_texto}}</textarea>
+                <div style="margin-top: 10px">
+                    <button type="submit" name="botao" value="classifica">Classifica nivel</button>
+                    <button type="submit" name="botao" value="troca">Troca palavras</button>
+                </div>
+            </form>
+            <div style="margin-top: 5px">
+                <button onclick="limpar(1)">Limpar</button>
+            </div>
+        </div>
+    </div>
+    <div class="box" {{variavel_visivel_classifica}}>
+        {{variavel_classificacao}}
+        
+    </div>
+    <div class="box" {{variavel_visivel_troca}}>
+        <h3>Texto com algumas palavras trocadas:</h3>
+        <textarea type="text" id="2" spellcheck="false">{{variavel_texto_trocado}}</textarea>
+        <div style="margin-top: 10px">
+            <button onclick="troca_textarea()">Transferir</button>
+        </div>
+        <div style="margin-top: 5px">
+            <button onclick="limpar(2)">Limpar</button>
+        </div>
+    </div>
+
+    <script>
+        function troca_textarea() {
+            var textarea_1 = document.getElementById("1")
+            var textarea_2 = document.getElementById("2")
+
+            textarea_1.value = textarea_2.value
+        }
+
+        function limpar(id) {
+            var textarea = document.getElementById(id)
+
+            textarea.value = ""
+        }
+    </script>
+</body>
+</html>
